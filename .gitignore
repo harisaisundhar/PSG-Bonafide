@@ -1,7 +1,9 @@
-node_modules
-.cache/
-dist/
-.env
+# dependencies
+node_modules/
+
+# misc
 .DS_Store
-coverage/
-.vscode/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
