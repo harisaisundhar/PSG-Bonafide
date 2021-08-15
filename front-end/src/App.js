@@ -1,34 +1,21 @@
-import { useState, StrictMode } from "react";
-import { render } from "react-dom";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import Datum from "./Datum";
-import ThemeContext from "./ThemeContext";
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import LoginPage from "./views/LoginPage";
 
-const App = () => {
-  const theme = useState("darkblue");
-  return (
-    <ThemeContext.Provider value={theme}>
-     <div>
-        <Router>
-          <header className="w-full mb-10 bg-gradient-to-b text-center p-7 from-purple-400 via-pink-500 to-red-500">
-            <Link className="text-6xl text-white hover:text-gray-200" to="/">
-              Bonafide!
-            </Link>
-          </header>
+class App extends React.Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <div style={{ minHeight: "100vh" }}>
           <Switch>
             <Route path="/">
-              <Datum />
+              <LoginPage />
             </Route>
           </Switch>
-        </Router>
-      </div>
-    </ThemeContext.Provider>
-  );
-};
+        </div>
+      </BrowserRouter>
+    );
+  }
+}
 
-render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-  document.getElementById("root")
-);
+export default App;
