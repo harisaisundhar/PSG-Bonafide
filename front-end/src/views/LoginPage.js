@@ -1,6 +1,6 @@
 import React from "react";
-import { Card, Tabs, Form, Input, Button } from "antd";
-import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { Card, Tabs, Form, Input, Button, Row, Col } from "antd";
+import { IconComponent } from "../helpers/iconMap";
 const { TabPane } = Tabs;
 
 class LoginPage extends React.Component {
@@ -68,23 +68,28 @@ class LoginPage extends React.Component {
               rules={[{ required: true, message: "Enter your id" }]}
             >
               <Input
-                prefix={<UserOutlined />}
+                prefix={<IconComponent icon="User" />}
                 placeholder={this.state.inputMessage}
               />
             </Form.Item>
-
             <Form.Item
               name="password"
               rules={[{ required: true, message: "Enter your password" }]}
             >
               <Input.Password
-                prefix={<LockOutlined />}
+                prefix={<IconComponent icon="Lock" />}
                 placeholder="Enter password"
               />
             </Form.Item>
-            <Form.Item>
-              <Button type="primary">Log in</Button>
-            </Form.Item>
+            <Row justify="center">
+              <Col span={8}></Col>
+              <Col span={8}>
+                <Form.Item>
+                  <Button type="primary">Log in</Button>
+                </Form.Item>
+              </Col>
+              <Col span={8}></Col>
+            </Row>
           </Form>
         </Card>
       </div>
