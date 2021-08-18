@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const morgan = require("morgan");
 const auth = require("./middleware/auth");
 const loginController = require("./controllers/login");
 
@@ -8,6 +9,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(morgan("combined"));
 
 mongoose.connect("mongodb://localhost/bonafide", {
   useNewUrlParser: true,
