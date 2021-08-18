@@ -14,8 +14,9 @@ const studentSchema = new mongoose.Schema({
   rollNo: { type: String, required: true, unique: true, immutable: true },
   firstName: { type: String, immutable: true },
   lastName: { type: String, immutable: true },
-  roles: { type: [String], immutable: true },
-  emailId: { type: String, immutable: true },
+  role: { type: String, immutable: true },
+  email: { type: String, immutable: true },
+  classId: { type: String, immutable: false },
   bonafides: { type: [bonafideSchema] },
 });
 

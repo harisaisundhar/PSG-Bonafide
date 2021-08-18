@@ -5,7 +5,7 @@ const tutorSchema = new mongoose.Schema({
   firstName: { type: String, immutable: true },
   lastName: { type: String, immutable: true },
   email: { type: String, immutable: true },
-  roles: { type: [String], immutable: true },
+  role: { type: String, immutable: true },
   tutorClass: { type: String },
 });
 
