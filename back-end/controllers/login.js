@@ -40,6 +40,7 @@ exports.nucleus_auth = async (req, res) => {
               response_data,
               process.env.JWT_SECRET
             );
+            //console.log(response_data)
             res.cookie("bonafide_token", token);
             res.status(200).json({
               success: true,
