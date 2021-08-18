@@ -4,18 +4,21 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const auth = require("./middleware/auth");
 const loginController = require("./controllers/login");
+const cookieParser = require("cookie-parser");
+require("dotenv").config();
 
 const app = express();
-
+app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan("combined"));
 
-mongoose.connect("mongodb://localhost/bonafide", {
+mongoose.connect(process.env.DBURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
 });
+
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function () {
@@ -28,6 +31,13 @@ app.get("/api", auth, (req, res) => {
   res.status(200).send("Hello! Welcome to Bonafide API!");
 });
 
-app.listen(4000, () => {
-  console.log(`Node app listening at http://localhost:4000`);
-});
+( function() {
+  try {
+    app.listen(process.env.PORT, () => {
+      console.log(`Node app listening at http://localhost:${process.env.PORT}/api`)
+    })
+  } catch (e) {
+    console.error(e)
+  }
+}());
+
