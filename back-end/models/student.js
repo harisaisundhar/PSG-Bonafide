@@ -1,14 +1,5 @@
 const mongoose = require("mongoose");
-
-const bonafideSchema = new mongoose.Schema({
-  id: { type: Number, immutable: true },
-  title: { type: String },
-  description: { type: String },
-  supportingDocumentsLink: { type: String },
-  documentLink: { type: String },
-  status: { type: String },
-  comments: { type: String },
-});
+const bonafideSchema = require('./bonafide');
 
 const studentSchema = new mongoose.Schema({
   rollNo: { type: String, required: true, unique: true, immutable: true },
@@ -17,7 +8,7 @@ const studentSchema = new mongoose.Schema({
   role: { type: String, immutable: true },
   email: { type: String, immutable: true },
   classId: { type: String, immutable: false },
-  bonafides: { type: [bonafideSchema] },
+  bonafides: [bonafideSchema.schema] 
 });
 
 module.exports = mongoose.model("StudentModel", studentSchema);

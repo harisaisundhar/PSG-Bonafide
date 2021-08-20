@@ -3,7 +3,8 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
-const mail  = require("./controllers/mail")
+const mail = require("./controllers/mail")
+const stud  = require("./controllers/student")
 
 const auth = require("./middleware/auth");
 const loginController = require("./controllers/login");
@@ -30,7 +31,7 @@ db.once("open", function () {
 
 app.post("/api/login", loginController.nucleus_auth);
 app.get("/api/sendmail", mail.sendMail)
-
+app.get("/api/student/:rollNo", auth, stud.getBonafide)
 app.get("/api", auth, (req, res) => {
   res.status(200).send("Hello! Welcome to Bonafide API!");
 });
