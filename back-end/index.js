@@ -7,6 +7,7 @@ const mail = require("./controllers/mail")
 const stud  = require("./controllers/student")
 
 const auth = require("./middleware/auth");
+const studentRouter = require("./routes/student")
 const loginController = require("./controllers/login");
 require("dotenv").config();
 
@@ -29,9 +30,10 @@ db.once("open", function () {
   console.log("Connected to database successfully!");
 });
 
+app.use('/api/student', studentRouter);
 app.post("/api/login", loginController.nucleus_auth);
 app.get("/api/sendmail", mail.sendMail)
-app.get("/api/student/:rollNo", auth, stud.getBonafide)
+
 app.get("/api", auth, (req, res) => {
   res.status(200).send("Hello! Welcome to Bonafide API!");
 });
