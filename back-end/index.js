@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const mail = require("./controllers/mail")
-const stud  = require("./controllers/student")
 
 const auth = require("./middleware/auth");
 const studentRouter = require("./routes/student")
@@ -37,6 +36,7 @@ app.get("/api/sendmail", mail.sendMail)
 app.get("/api", auth, (req, res) => {
   res.status(200).send("Hello! Welcome to Bonafide API!");
 });
+
 
 (function () {
   try {
