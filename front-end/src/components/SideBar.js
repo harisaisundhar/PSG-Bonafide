@@ -1,10 +1,11 @@
 import React from "react";
-import { Layout, Menu, Space } from "antd";
+import { Menu} from "antd";
 import Bonafide from "../assets/images/bonafide.png";
 
 class SideBar extends React.Component{
     constructor(props){
         super(props)
+        
         this.handleNavClick = this.handleNavClick.bind(this)
     }
     handleNavClick(e){
