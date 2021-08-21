@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const tutorSchema = new mongoose.Schema({
-  id: { type: String, required: true, unique: true, immutable: true },
+  tutorId: { type: String, required: true, unique: true, immutable: true },
   firstName: { type: String, immutable: true },
   lastName: { type: String, immutable: true },
   email: { type: String, immutable: true },
