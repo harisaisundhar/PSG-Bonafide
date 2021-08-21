@@ -6,6 +6,16 @@ import { Header } from "antd/lib/layout/layout";
 
 const { Sider } = Layout;
 class LayOut extends React.Component {
+constructor(props){
+  super(props)
+  this.state = {page: "apply"}
+  this.handleSideBarClick = this.handleSideBarClick.bind(this)
+}
+handleSideBarClick(e){
+ this.setState({page: e})
+ console.log(this.state.page)
+}
+
   render() {
     return (
       <div>
@@ -18,7 +28,7 @@ class LayOut extends React.Component {
               background: "white",
             }}
           >
-            <SideBar />
+            <SideBar sideBarClick={this.handleSideBarClick}/>
           </Sider>
           <Layout>
             <Header></Header>

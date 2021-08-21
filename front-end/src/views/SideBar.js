@@ -3,6 +3,13 @@ import { Layout, Menu, Space } from "antd";
 import Bonafide from "../assets/images/bonafide.png";
 
 class SideBar extends React.Component{
+    constructor(props){
+        super(props)
+        this.handleNavClick = this.handleNavClick.bind(this)
+    }
+    handleNavClick(e){
+        this.props.sideBarClick(e.key)
+    }
     render(){
         return(
         <div>
@@ -15,7 +22,7 @@ class SideBar extends React.Component{
             }}
           >
             <img
-              alt="hello"
+              alt="Bonu"
               src={Bonafide}
               height={180}
               width={200}
@@ -25,7 +32,7 @@ class SideBar extends React.Component{
           <Menu
             theme="light"
             mode="inline"
-            defaultSelectedKeys={['sub1']}
+            defaultSelectedKeys={['apply']}
             style={{
               border: "none",
               background: "white",
@@ -36,14 +43,15 @@ class SideBar extends React.Component{
               fontSize: "15px",
 
             }}
+            onClick = {this.handleNavClick}
           ><br></br><br></br><br></br>
-            <Menu.Item key = "sub1" style={{ borderRadius: "4px", background: "5853bc" }}>
+            <Menu.Item key = "apply" style={{ borderRadius: "4px", background: "5853bc" }}>
               Apply For Bonafide 
             </Menu.Item><br></br>
-            <Menu.Item style={{ borderRadius: "4px", background: "5853bc" }}>
+            <Menu.Item key="status" style={{ borderRadius: "4px", background: "5853bc" }}>
               Status of Bonafide
             </Menu.Item><br></br>
-            <Menu.Item style={{ borderRadius: "4px", background: "5853bc" }}>
+            <Menu.Item key="approved" style={{ borderRadius: "4px", background: "5853bc" }}>
               Approved Bonafides
             </Menu.Item>
           </Menu>

@@ -9,9 +9,7 @@ class App extends React.Component {
       <BrowserRouter>
         <div style={{ minHeight: "100vh" }}>
           <Switch>
-            <Route path="/">
-              <LayOut />
-            </Route>
+            <Route path="/" render={props=><LayOut {...props}/>}/>
           </Switch>
         </div>
       </BrowserRouter>
