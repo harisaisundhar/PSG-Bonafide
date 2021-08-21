@@ -11,13 +11,17 @@ exports.approve = async (req, res) => {
                 .findOneAndUpdate(
                     { rollNo: req.body.rollNo, bonafides: { $elemMatch: { _id: id } } },
                     { $set: { 'bonafides.$.status': "tutorApproved" } },
-                    (err, updated) => {
+                    async (err) => {
                         if (err)
                         {
                             console.error(err)
                             res.status(400).json({ message: "updation error", err });
                         }
-                        res.status(200).json({ message: "success", updated });
+                        const data = await Task
+                            .find({ rollNo: req.body.rollNo })
+                            .lean()
+                            .exec()
+                        res.status(200).json({ message: "success", data : data });
                     }
                 )
         } else {
