@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginPage from "./views/LoginPage";
-import SideBar from "./components/SideBar";
+import LayOut from "./components/LayOut";
 
 class App extends React.Component {
   render() {
@@ -10,7 +10,7 @@ class App extends React.Component {
         <div style={{ minHeight: "100vh" }}>
           <Switch>
             <Route path="/">
-              <SideBar />
+              <LayOut />
             </Route>
           </Switch>
         </div>
