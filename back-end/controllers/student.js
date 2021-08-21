@@ -5,10 +5,9 @@ exports.getPending = async (req, res) => {
         if (req.user.role === 'admin') {
             const data = await Task
                 .aggregate(
-                    [{ $match: { "bonafides.status": "tutorApproved" } },
-                        { $skip: 0 }])
+                    [{ $match: { "bonafides.status": "tutorApproved" } }])
             data.map(student => {
-                student.bonafides = student.bonafides.filter(bonafide => { return bonafide.status === 'tutorApproved' })
+                student.bonafides = student.bonafides.filter(bonafide =>  bonafide.status === 'tutorApproved' )
             })
 
             res.status(200).json({ data: data })   
