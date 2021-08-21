@@ -7,6 +7,7 @@ const mail = require("./controllers/mail")
 
 const auth = require("./middleware/auth");
 const studentRouter = require("./routes/student")
+const tutorRouter = require("./routes/tutor")
 const loginController = require("./controllers/login");
 require("dotenv").config();
 
@@ -21,6 +22,7 @@ mongoose.connect(process.env.DBURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
+  useFindAndModify: false
 });
 
 const db = mongoose.connection;
@@ -30,6 +32,7 @@ db.once("open", function () {
 });
 
 app.use('/api/student', studentRouter);
+app.use('/api/tutor', tutorRouter);
 app.post("/api/login", loginController.nucleus_auth);
 app.get("/api/sendmail", mail.sendMail)
 
