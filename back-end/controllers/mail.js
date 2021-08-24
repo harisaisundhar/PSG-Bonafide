@@ -3,15 +3,14 @@ require("dotenv").config();
 
 const nodemailer = require("nodemailer");
 
-exports.sendMail = async (req, res) =>{
-  
+exports.sendMail = async (req, res) => {
   let testAccount = nodemailer.createTestAccount();
 
   let transporter = nodemailer.createTransport({
-    service : "gmail",
+    service: "gmail",
     auth: {
-      user: process.env.Email, 
-      pass: process.env.Pass, 
+      user: process.env.Email,
+      pass: process.env.Pass,
     },
   });
 
@@ -25,10 +24,7 @@ exports.sendMail = async (req, res) =>{
 
   console.log("Message sent: %s", process.env.SendEmail);
   res.status(200).json({
-              success: true,
-              data: "mail sent",
+    success: true,
+    data: "mail sent",
   });
-}
-
-
-
+};

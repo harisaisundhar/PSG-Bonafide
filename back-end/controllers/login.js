@@ -2,7 +2,7 @@ const axios = require("axios");
 const jsonwebtoken = require("jsonwebtoken");
 const userHelper = require("../helpers/fetch_user");
 const student = require("../models/student");
-const tuts  = require("../models/tutor")
+const tuts = require("../models/tutor");
 require("dotenv").config();
 
 exports.nucleus_auth = async (req, res) => {
@@ -59,7 +59,9 @@ exports.nucleus_auth = async (req, res) => {
     }
     case "faculty":
       await tuts
-        .findOne({ tutorId: req.body.userID }).lean().exec()
+        .findOne({ tutorId: req.body.userID })
+        .lean()
+        .exec()
         .then((response_data) => {
           const token = jsonwebtoken.sign(
             response_data,
@@ -69,7 +71,7 @@ exports.nucleus_auth = async (req, res) => {
           res.status(200).json({
             success: true,
             data: response_data,
-          });  
+          });
         })
         .catch(() => console.log("Duplicate insertion"));
       break;
