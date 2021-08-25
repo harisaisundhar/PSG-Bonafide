@@ -15,6 +15,15 @@ constructor(props){
 handleSideBarClick(e){
  this.setState({page: e})
 }
+//Add content components here
+renderContent(){
+  if (this.state.page === 'status'){
+      return <Status />
+  }
+  else{
+    return <h1>Hello under contruction :)</h1>
+  }
+}
 
   render() {
     return (
@@ -33,7 +42,7 @@ handleSideBarClick(e){
           <Layout>
             <Header style={{background: "white"}}>{this.state.page}</Header>
 
-            <Content><Status /></Content>
+            <Content>{this.renderContent()}</Content>
           </Layout>
 
         </Layout>
