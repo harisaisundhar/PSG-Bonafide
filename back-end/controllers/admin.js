@@ -1,22 +1,24 @@
 const Task = require("../models/student");
 const mongoose = require("mongoose");
 const userHelper = require("../helpers/create_bonafide");
-let fs = require("fs");
-var path = require("path");
+const fs = require("fs");
+const path = require("path");
+const gdriveUpload = require("../helpers/gdrive_upload");
 
 exports.approve = async (req, res) => {
 	try {
 		if (req.user.role === "admin") {
-			var bonafideName = req.body.rollNo + req.body.bonafideId;
-			var id = mongoose.Types.ObjectId(req.body.bonafideId);
+			let id = mongoose.Types.ObjectId(req.body.bonafideId);
+			let bonafideName = req.body.rollNo + req.body.bonafideId;
 			const bonafideCreate = await userHelper.createBonafide(req);
+			const gDriveId = await gdriveUpload.GdriveUpload(bonafideName);
 			if (bonafideCreate.success === true) {
 				await Task.findOneAndUpdate(
 					{ rollNo: req.body.rollNo, bonafides: { $elemMatch: { _id: id } } },
 					{
 						$set: {
 							"bonafides.$.status": "adminApproved",
-							"bonafides.$.documentLink": `${bonafideName}`,
+							"bonafides.$.documentLink": `${gDriveId}`,
 						},
 					},
 					async (err) => {
@@ -27,17 +29,21 @@ exports.approve = async (req, res) => {
 								.json({ success: false, message: "updation error", err });
 						}
 						fs.unlink(
-							path.join(__dirname, `../bonafide-certi/${bonafideName}.pdf`),
+							path.join(
+								__dirname,
+								`../assets/bonafide-certi/${bonafideName}.pdf`
+							),
 							(err) => {
 								if (err) {
 									console.log(err);
 								}
 							}
 						);
-						const data = await Task.find({ rollNo: req.body.rollNo })
-							.lean()
-							.exec();
-						res.status(200).json({ success: true, data: data });
+						// const data = await Task.find({ rollNo: req.body.rollNo })
+						// 	.lean()
+						// 	.exec();
+						// res.status(200).json({ success: true, data: data });
+						res.status(200).json({ success: true, docID: gDriveId });
 					}
 				);
 			} else {
