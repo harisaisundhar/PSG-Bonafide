@@ -3,7 +3,8 @@ import {
   LockOutlined,
   SolutionOutlined,
   LoadingOutlined,
-  SmileOutlined,
+  ReconciliationOutlined,
+  ContainerOutlined,
 } from "@ant-design/icons";
 
 const IconComponent = ({ icon, properties, onClick }) => {
@@ -15,8 +16,12 @@ const IconComponent = ({ icon, properties, onClick }) => {
     return <SolutionOutlined style={{ ...properties }} onClick={onClick} />;
   } else if (icon === "Loading") {
     return <LoadingOutlined style={{ ...properties }} onClick={onClick} />;
-  } else if (icon === "Smile") {
-    return <SmileOutlined style={{ ...properties }} onClick={onClick} />;
+  } else if (icon === "Tutor") {
+    return (
+      <ReconciliationOutlined style={{ ...properties }} onClick={onClick} />
+    );
+  } else if (icon === "HOD") {
+    return <ContainerOutlined style={{ ...properties }} onClick={onClick} />;
   }
 };
 
