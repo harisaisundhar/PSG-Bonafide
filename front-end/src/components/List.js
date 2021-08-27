@@ -1,46 +1,126 @@
 import React from "react";
 import { Steps } from "antd";
 import { IconComponent } from "../helpers/iconMap";
-import { Row } from "antd";
+import { Row, Card } from "antd";
 
 class List extends React.Component {
   render() {
     const { Step } = Steps;
-
+    const details = [
+      {
+        id: "1",
+        title: "Hello",
+        description: "Hola bitch",
+        supportingDocumentsLink: "https://yournamedoesntmatter",
+        documentLink: "https://uaresmelly",
+        status: "hello nine",
+        comments: "u are not nice",
+      },
+      {
+        id: "2",
+        title: "Hola",
+        description: "Hola bitch",
+        supportingDocumentsLink: "https://yournamedoesntmatter",
+        documentLink: "https://uaresmelly",
+        status: "hello nine",
+        comments: "u are not nice",
+      },
+      {
+        id: "2",
+        title: "Hola",
+        description: "Hola bitch",
+        supportingDocumentsLink: "https://yournamedoesntmatter",
+        documentLink: "https://uaresmelly",
+        status: "hello nine",
+        comments: "u are not nice",
+      },
+      {
+        id: "2",
+        title: "Hola",
+        description: "Hola bitch",
+        supportingDocumentsLink: "https://yournamedoesntmatter",
+        documentLink: "https://uaresmelly",
+        status: "hello nine",
+        comments: "u are not nice",
+      },
+      {
+        id: "2",
+        title: "Hola",
+        description: "Hola bitch",
+        supportingDocumentsLink: "https://yournamedoesntmatter",
+        documentLink: "https://uaresmelly",
+        status: "hello nine",
+        comments: "u are not nice",
+      },
+      {
+        id: "2",
+        title: "Hola",
+        description: "Hola bitch",
+        supportingDocumentsLink: "https://yournamedoesntmatter",
+        documentLink: "https://uaresmelly",
+        status: "hello nine",
+        comments: "u are not nice",
+      },
+      {
+        id: "2",
+        title: "Hola",
+        description: "Hola bitch",
+        supportingDocumentsLink: "https://yournamedoesntmatter",
+        documentLink: "https://uaresmelly",
+        status: "hello nine",
+        comments: "u are not nice",
+      },
+      {
+        id: "2",
+        title: "Hola",
+        description: "Hola bitch",
+        supportingDocumentsLink: "https://yournamedoesntmatter",
+        documentLink: "https://uaresmelly",
+        status: "hello nine",
+        comments: "u are not nice",
+      },
+      {
+        id: "2",
+        title: "Hola",
+        description: "Hola bitch",
+        supportingDocumentsLink: "https://yournamedoesntmatter",
+        documentLink: "https://uaresmelly",
+        status: "hello nine",
+        comments: "u are not nice",
+      },
+      {
+        id: "2",
+        title: "Hola",
+        description: "Hola bitch",
+        supportingDocumentsLink: "https://yournamedoesntmatter",
+        documentLink: "https://uaresmelly",
+        status: "hello nine",
+        comments: "u are not nice",
+      },
+      {
+        id: "2",
+        title: "Hola",
+        description: "Hola bitch",
+        supportingDocumentsLink: "https://yournamedoesntmatter",
+        documentLink: "https://uaresmelly",
+        status: "hello nine",
+        comments: "u are not nice",
+      },
+    ];
     return (
       <div>
-        <Row>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              width: "60em",
-            }}
-          >
-            <Steps responsive={true}>
-              <Step
-                status="finish"
-                title="Applied"
-                icon={<IconComponent icon="User" />}
-              />
-              <Step
-                status="finish"
-                title="Mail Sent"
-                icon={<IconComponent icon="Solution" />}
-              />
-              <Step
-                status="process"
-                title="Tutor Review"
-                icon={<IconComponent icon="Loading" />}
-              />
-              <Step
-                status="wait"
-                title="Hod Review"
-                icon={<IconComponent icon="Smile" />}
-              />
-            </Steps>
-          </div>
-        </Row>
+        {details.map((item) => {
+          return (
+            <Row style={{ justifyContent: "center" }}>
+              <Card
+                style={{ margin: "15px", width: "50em" }}
+                title={item.title}
+              >
+                {item.description}
+              </Card>
+            </Row>
+          );
+        })}
       </div>
     );
   }
