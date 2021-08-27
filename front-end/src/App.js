@@ -1,8 +1,6 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import LayOut from "./views/LayOut";
-
 
 class App extends React.Component {
   render() {
@@ -10,7 +8,10 @@ class App extends React.Component {
       <BrowserRouter>
         <div style={{ minHeight: "100vh" }}>
           <Switch>
-            <Route path="/">
+            <Route exact path="/">
+              <Redirect to={"/app"} />
+            </Route>
+            <Route path="/app">
               <LayOut />
             </Route>
           </Switch>

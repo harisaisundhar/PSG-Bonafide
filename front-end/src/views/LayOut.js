@@ -1,29 +1,20 @@
 import React from "react";
-import { Layout} from "antd";
-
+import { Layout } from "antd";
 import SideBar from "../components/SideBar";
-import Status from "../components/Status"
 import { Content, Header } from "antd/lib/layout/layout";
-
+import Routes from "../routes";
+import { useHistory } from "react-router";
 const { Sider } = Layout;
-class LayOut extends React.Component {
-constructor(props){
-  super(props)
-  this.state = {page: "apply"}
-  this.handleSideBarClick = this.handleSideBarClick.bind(this)
-}
-handleSideBarClick(e){
- this.setState({page: e})
-}
-//Add content components here
-renderContent(){
-  if (this.state.page === 'status'){
-      return <Status />
+
+class LayOutImplementation extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleSideBarClick = this.handleSideBarClick.bind(this);
   }
-  else{
-    return <h1>Hello under contruction :)</h1>
+
+  handleSideBarClick(e) {
+    this.props.history.push("/app/" + e);
   }
-}
 
   render() {
     return (
@@ -37,18 +28,21 @@ renderContent(){
               background: "white",
             }}
           >
-            <SideBar sideBarClick={this.handleSideBarClick}/>
+            <SideBar sideBarClick={this.handleSideBarClick} />
           </Sider>
           <Layout>
-            <Header style={{background: "white"}}>{this.state.page}</Header>
-
-            <Content>{this.renderContent()}</Content>
+            <Header style={{ background: "white" }}>hello</Header>
+            <Content>
+              <Routes />
+            </Content>
           </Layout>
-
         </Layout>
       </div>
     );
   }
 }
 
-export default LayOut;
+export default function LayOut() {
+  const history = useHistory();
+  return <LayOutImplementation history={history} />;
+}
