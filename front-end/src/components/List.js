@@ -21,14 +21,13 @@ class List extends React.Component {
       status: status,
     };
     var array = [];
-    var temp = status;
     var arr = ["User", "Solution", "Tutor", "HOD"];
     for (let i = 0; i < 4; i++) {
       if (i === parseInt(status)) {
         array[i] = "process";
         arr[i] = "Loading";
       } else {
-        if (i < temp) array[i] = "finish";
+        if (i < parseInt(status)) array[i] = "finish";
         else array[i] = "wait";
       }
     }
@@ -175,7 +174,6 @@ class List extends React.Component {
           cancelButtonProps={{ style: { display: "none" } }}
           width={650}
         >
-          {console.log(this.state.stepData)}
           <Row>
             <div
               style={{

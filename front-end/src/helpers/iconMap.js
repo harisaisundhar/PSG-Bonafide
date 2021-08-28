@@ -5,6 +5,7 @@ import {
   LoadingOutlined,
   ReconciliationOutlined,
   ContainerOutlined,
+  UploadOutlined,
 } from "@ant-design/icons";
 
 const IconComponent = ({ icon, properties, onClick }) => {
@@ -22,6 +23,8 @@ const IconComponent = ({ icon, properties, onClick }) => {
     );
   } else if (icon === "HOD") {
     return <ContainerOutlined style={{ ...properties }} onClick={onClick} />;
+  } else if (icon === "Upload") {
+    return <UploadOutlined style={{ ...properties }} onClick={onClick} />;
   }
 };
 
