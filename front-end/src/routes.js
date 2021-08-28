@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import Apply from "./components/Apply";
-import Status from "./components/Status";
+import List from "./components/List";
 
 class Routes extends React.Component {
   render() {
@@ -14,7 +14,7 @@ class Routes extends React.Component {
           <Apply />
         </Route>
         <Route exact path="/app/list">
-          <Status />
+          <List />
         </Route>
       </Switch>
     );
