@@ -2,6 +2,7 @@ import React from "react";
 import { Steps } from "antd";
 import { IconComponent } from "../helpers/iconMap";
 import { Row, Card, Button, Modal } from "antd";
+import { EditOutlined, DownloadOutlined, SettingOutlined } from '@ant-design/icons';
 
 class List extends React.Component {
   constructor(props) {
@@ -15,11 +16,12 @@ class List extends React.Component {
     this.handleModalClick = this.handleModalClick.bind(this);
   }
 
-  handleModalClick(title, status) {
+  handleModalClick(title, status, e) {
     const data = {
       title: title,
       status: status,
     };
+  
     var array = [];
     var arr = ["User", "Solution", "Tutor", "HOD"];
     for (let i = 0; i < 4; i++) {
@@ -44,8 +46,8 @@ class List extends React.Component {
     const details = [
       {
         id: "1",
-        title: "Hello",
-        description: "Hola bro",
+        title: "Bonafide Title",
+        description: "Bonafide Description",
         supportingDocumentsLink: "https://yournamedoesntmatter",
         documentLink: "https://uaresmelly",
         status: "0",
@@ -53,8 +55,8 @@ class List extends React.Component {
       },
       {
         id: "2",
-        title: "Hola",
-        description: "Hola bruh",
+        title: "Bonafide Title",
+        description: "Bonafide Description",
         supportingDocumentsLink: "https://yournamedoesntmatter",
         documentLink: "https://uaresmelly",
         status: "1",
@@ -62,8 +64,8 @@ class List extends React.Component {
       },
       {
         id: "2",
-        title: "Hola",
-        description: "Hola babes",
+        title: "Bonafide Title",
+        description: "Bonafide Description",
         supportingDocumentsLink: "https://yournamedoesntmatter",
         documentLink: "https://uaresmelly",
         status: "2",
@@ -71,8 +73,8 @@ class List extends React.Component {
       },
       {
         id: "2",
-        title: "Hola",
-        description: "Hola you",
+        title: "Bonafide Title",
+        description: "Bonafide Description",
         supportingDocumentsLink: "https://yournamedoesntmatter",
         documentLink: "https://uaresmelly",
         status: "3",
@@ -80,8 +82,8 @@ class List extends React.Component {
       },
       {
         id: "2",
-        title: "Hola",
-        description: "Hola koala",
+        title: "Bonafide Title",
+        description: "Bonafide Description",
         supportingDocumentsLink: "https://yournamedoesntmatter",
         documentLink: "https://uaresmelly",
         status: "3",
@@ -89,8 +91,8 @@ class List extends React.Component {
       },
       {
         id: "2",
-        title: "Hola",
-        description: "Hola kangaroo",
+        title: "Bonafide Title",
+        description: "Bonafide Description",
         supportingDocumentsLink: "https://yournamedoesntmatter",
         documentLink: "https://uaresmelly",
         status: "2",
@@ -98,8 +100,8 @@ class List extends React.Component {
       },
       {
         id: "2",
-        title: "Hola",
-        description: "Hola giraffe",
+        title: "Bonafide Title",
+        description: "Bonafide Description",
         supportingDocumentsLink: "https://yournamedoesntmatter",
         documentLink: "https://uaresmelly",
         status: "1",
@@ -107,8 +109,8 @@ class List extends React.Component {
       },
       {
         id: "2",
-        title: "Hola",
-        description: "Hola monkey",
+        title: "Bonafide Title",
+        description: "Bonafide Description",
         supportingDocumentsLink: "https://yournamedoesntmatter",
         documentLink: "https://uaresmelly",
         status: "2",
@@ -116,8 +118,8 @@ class List extends React.Component {
       },
       {
         id: "2",
-        title: "Hola",
-        description: "Hola elephant",
+        title: "Bonafide Title",
+        description: "Bonafide Description",
         supportingDocumentsLink: "https://yournamedoesntmatter",
         documentLink: "https://uaresmelly",
         status: "0",
@@ -125,8 +127,8 @@ class List extends React.Component {
       },
       {
         id: "2",
-        title: "Hola",
-        description: "Hola turtle",
+        title: "Bonafide Title",
+        description: "Bonafide Description",
         supportingDocumentsLink: "https://yournamedoesntmatter",
         documentLink: "https://uaresmelly",
         status: "1",
@@ -134,8 +136,8 @@ class List extends React.Component {
       },
       {
         id: "2",
-        title: "Hola",
-        description: "Hola tim",
+        title: "Bonafide Title",
+        description: "Bonafide Description",
         supportingDocumentsLink: "https://yournamedoesntmatter",
         documentLink: "https://uaresmelly",
         status: "3",
@@ -150,6 +152,7 @@ class List extends React.Component {
               <Card
                 style={{ margin: "15px", width: "50em" }}
                 title={item.title}
+
               >
                 {item.description}
                 <Button

@@ -31,7 +31,7 @@ class LayOutImplementation extends React.Component {
             <SideBar sideBarClick={this.handleSideBarClick} />
           </Sider>
           <Layout>
-            <Header style={{ background: "white" }}>hello</Header>
+            <Header style={{ background: "white" }}></Header>
             <Content>
               <Routes />
             </Content>
