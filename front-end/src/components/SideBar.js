@@ -6,7 +6,7 @@ class SideBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: window.location.pathname.split("/")[2],
+      page: window.location.pathname.split("/")[3],
     };
     this.handleNavClick = this.handleNavClick.bind(this);
   }

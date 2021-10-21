@@ -1,9 +1,10 @@
 import React from "react";
 import { Card, Tabs, Form, Input, Button, Row, Col } from "antd";
 import { IconComponent } from "../helpers/iconMap";
+import { useHistory } from "react-router";
 const { TabPane } = Tabs;
 
-class LoginPage extends React.Component {
+class LoginPageImplementation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,8 +14,11 @@ class LoginPage extends React.Component {
       password: "",
     };
     this.handleTabChange = this.handleTabChange.bind(this);
+    this.handleLoginClick = this.handleLoginClick.bind(this);
   }
-
+  handleLoginClick(e) {
+    this.props.history.push("/app/" + this.state.type);
+  }
   handleTabChange(activeKey) {
     if (activeKey === "student") {
       this.setState({
@@ -22,7 +26,8 @@ class LoginPage extends React.Component {
         type: "student",
       });
     } else if (activeKey === "faculty") {
-      this.setState({ inputMessage: "Enter faculty ID", type: "faculty" });
+      this.setState({ inputMessage: "Enter faculty ID", 
+      type: "faculty" });
     }
   }
 
@@ -85,7 +90,7 @@ class LoginPage extends React.Component {
               <Col span={8}></Col>
               <Col span={8}>
                 <Form.Item>
-                  <Button type="primary">Log in</Button>
+                  <Button onClick={this.handleLoginClick} type="primary">Log in</Button>
                 </Form.Item>
               </Col>
               <Col span={8}></Col>
@@ -97,4 +102,7 @@ class LoginPage extends React.Component {
   }
 }
 
-export default LoginPage;
+export default function LoginPage() {
+  const history = useHistory();
+  return <LoginPageImplementation history={history} />;
+}

@@ -13,7 +13,7 @@ class LayOutImplementation extends React.Component {
   }
 
   handleSideBarClick(e) {
-    this.props.history.push("/app/" + e);
+    this.props.history.push("/app/student/" + e);
   }
 
   render() {

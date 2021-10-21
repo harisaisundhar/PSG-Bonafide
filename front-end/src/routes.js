@@ -7,13 +7,13 @@ class Routes extends React.Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/app">
-          <Redirect to={"/app/apply"} />
+        <Route exact path="/app/student/">
+          <Redirect to={"/app/student/apply"} />
         </Route>
-        <Route exact path="/app/apply">
+        <Route exact path="/app/student/apply">
           <Apply />
         </Route>
-        <Route exact path="/app/list">
+        <Route exact path="/app/student/list">
           <List />
         </Route>
       </Switch>
