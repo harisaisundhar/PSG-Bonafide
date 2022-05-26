@@ -24,6 +24,7 @@
     "lodash": "^4.17.21",
     "mongoose": "^5.13.7",
     "morgan": "^1.10.0",
+    "node-google-drive": "^1.1.2",
     "nodemailer": "^6.6.3"
   },
   "devDependencies": {
